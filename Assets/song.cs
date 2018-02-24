@@ -9,11 +9,13 @@ public class song : MonoBehaviour {
 
     StreamReader f;
     string[] sections = { "[General]", "[Editor]", "[Metadata]", "[Difficulty]", "[Events]", "[TimingPoints]", "[HitObjects]"};
+    public static string path;
 
-	public song(string map, string diff)
+    public song(string map, string diff)
     {
-        string path = "Assets/" + map + "/" + map + " [" + diff + "].osu";
-        string[] lines = File.ReadAllLines(path);
+        path = "Assets/" + map + "/";
+        string diff_path = path + map + " [" + diff + "].osu";
+        string[] lines = File.ReadAllLines(diff_path);
         Hashtable vars = new Hashtable();
         string section = "";
         int section_index = -1;
